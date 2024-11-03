@@ -20,7 +20,7 @@ app.use('/api', apiRouter); // if the req url starts with /api, use the apiRoute
 
 app.get('/', (req, res) => {
     res.render('home', {name: 'John Doe'});
-}); 
+});
 
 app.get('/ping', (req, res) => {
     return res.json({
