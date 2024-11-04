@@ -16,6 +16,7 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "http-status-codes": "^2.3.0",
     "mongoose": "^8.8.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
