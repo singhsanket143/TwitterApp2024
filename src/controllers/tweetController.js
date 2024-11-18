@@ -59,3 +59,7 @@ export const updateTweet = async (req, res) => {
         return errorResponse(error);
     }
 }
+
+export const sum = (a, b) => {
+    return a + b;
+}
