@@ -6,7 +6,7 @@ import {
     deleteTweet as deleteTweetService,
     updateTweet as updateTweetService
 } from "../services/tweetService.js";
-import { successResponse } from "../utils/responses.js";
+import { errorResponse, successResponse } from "../utils/responses.js";
 
 export const createTweet = async (req, res) => {
     console.log(req.file);
@@ -16,27 +16,28 @@ export const createTweet = async (req, res) => {
             image: req.file?.location
         });
 
-        return successResponse(response, StatusCodes.CREATED, 'Tweet created successfully');
+        return successResponse(response, StatusCodes.CREATED, 'Tweet created successfully', res);
     } catch(error) {
-        return errorResponse(error);
+        return errorResponse(error, res);
     }
 }
 
 export const getTweets = async (req, res) => {
     try {
         const response = await getTweetsService();
-
-        return successResponse(response, StatusCodes.OK, 'Tweets fetched successfully');
+        console.log(response);
+        return successResponse(response, StatusCodes.OK, 'Tweets fetched successfully', res);
     } catch(error) {
-        return errorResponse(error);
+        console.log(error);
+        return errorResponse(error, res);
     }
 }
 
 export const getTweetById = async (req, res) => {
     try {
-        const response = await getTweetByIdService(req.params.id);
+        const response = await getTweetByIdService(req.params.id, res);
 
-        return successResponse(response, StatusCodes.OK, 'Tweet fetched successfully');
+        return successResponse(response, StatusCodes.OK, 'Tweet fetched successfully', res);
     } catch(error) {
         return errorResponse(error);
     }
@@ -45,18 +46,18 @@ export const getTweetById = async (req, res) => {
 export const deleteTweet = async (req, res) => {
     try {
         const response = await deleteTweetService(req.params.id);
-        return successResponse(response, StatusCodes.OK, 'Tweet deleted successfully');
+        return successResponse(response, StatusCodes.OK, 'Tweet deleted successfully', res);
     } catch (error) {
-        return errorResponse(error);
+        return errorResponse(error, res);
     }
 }
 
 export const updateTweet = async (req, res) => {
     try {
         const response = await updateTweetService(req.params.id, req.body.body);
-        return successResponse(response, StatusCodes.OK, 'Tweet updated successfully');
+        return successResponse(response, StatusCodes.OK, 'Tweet updated successfully', res);
     } catch(error) {
-        return errorResponse(error);
+        return errorResponse(error, res);
     }
 }
 

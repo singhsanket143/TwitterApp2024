@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "start": "npx nodemon src/index.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.25.9",
     "aws-sdk": "^2.1691.0",
     "bad-words": "^4.0.0",
     "dotenv": "^16.4.5",
