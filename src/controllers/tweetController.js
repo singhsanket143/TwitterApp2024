@@ -9,7 +9,6 @@ import {
 import { errorResponse, successResponse } from "../utils/responses.js";
 
 export const createTweet = async (req, res) => {
-    console.log(req.file);
     try {
         const response = await createTweetService({
             body: req.body.body,
@@ -59,8 +58,4 @@ export const updateTweet = async (req, res) => {
     } catch(error) {
         return errorResponse(error, res);
     }
-}
-
-export const sum = (a, b) => {
-    return a + b;
 }
